@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ShellComponent } from './shell.component';
+import { ShellComponent } from './components/shell/shell.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { IconModule } from 'src/app/ui/shared/components/icon/icon.module';
+import { IconModule } from '../shared/components/icon/icon.module';
 
 @NgModule({
   declarations: [
