@@ -1,20 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
-import { createValueAccessor } from 'src/app/lib';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
   selector: 'mn-rating',
   templateUrl: './rating.component.html',
   styleUrls: ['./rating.component.scss'],
-  providers: [createValueAccessor(() => RatingComponent)]
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => RatingComponent),
+    multi: true
+  }]
 })
 export class RatingComponent implements OnInit, ControlValueAccessor {
-  public stars: undefined[] = new Array(5);
-
-  @Input()
-  public set starCount(value: number) {
-    this.stars = new Array(value);
-  }
+  public stars: boolean[] = [ false, false, false, false, false ];
+  isDis = false;
 
   @Input()
   public readonly: boolean = false;
@@ -37,5 +36,29 @@ export class RatingComponent implements OnInit, ControlValueAccessor {
 
   public setDisabledState(isDisabled: boolean): void {}
 
-  public writeValue(ratingCount: number): void {}
+  public writeValue(ratingCount: number): void {
+    const newStars: boolean[] = new Array(this.stars.length).fill(false);
+
+    for (let i = 0; i < ratingCount; i++) {
+      newStars[ i ] = true;
+    }
+
+    this.stars = newStars;
+  }
+
+  public onClickStar(index: number): void {
+    const newStars: boolean[] = new Array(this.stars.length).fill(false);
+
+    for (let i = 0; i < newStars.length; i++) {
+      newStars[ i ] = true;
+
+      if (i === index) {
+        break
+      }
+    }
+
+    this.stars = newStars;
+    this.updateFormControlTouchState();
+    this.updateFormControlValue(this.stars.filter(isSelected => isSelected).length);
+  }
 }
