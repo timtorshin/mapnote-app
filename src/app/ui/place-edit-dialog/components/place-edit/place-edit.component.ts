@@ -15,7 +15,9 @@ export class PlaceEditComponent implements OnInit {
     photos: new FormControl()
   });
 
-  constructor() {}
+  constructor() {
+    this.form.get('rating')?.disable();
+  }
 
   ngOnInit(): void {}
 }
