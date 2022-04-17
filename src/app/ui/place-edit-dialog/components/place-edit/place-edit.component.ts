@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { DialogService } from 'src/app/dialog.service';
 
 @Component({
   selector: 'mn-place-edit',
@@ -15,9 +16,9 @@ export class PlaceEditComponent implements OnInit {
     photos: new FormControl()
   });
 
-  constructor() {
-    this.form.get('rating')?.disable();
-  }
+  constructor(private dialogService: DialogService) {}
 
-  ngOnInit(): void {}
+  public ngOnInit(): void {}
+
+  public onClickCancelButton(): void {}
 }

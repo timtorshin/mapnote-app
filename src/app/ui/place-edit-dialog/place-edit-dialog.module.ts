@@ -5,6 +5,7 @@ import { PlaceEditComponent } from './components/place-edit/place-edit.component
 import { RatingModule } from '../shared/components/rating/rating.module';
 import { TagsModule } from '../shared/components/tags/tags.module';
 import { MdEditorModule } from '../shared/components/md-editor/md-editor.module';
+import { PhotosUploaderModule } from '../shared/components/photos-uploader/photos-uploader.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MdEditorModule } from '../shared/components/md-editor/md-editor.module'
     RatingModule,
     ReactiveFormsModule,
     TagsModule,
-    MdEditorModule
+    MdEditorModule,
+    PhotosUploaderModule
   ]
 })
 export class PlaceEditDialogModule {}
