@@ -6,6 +6,7 @@ import { RatingModule } from '../shared/components/rating/rating.module';
 import { TagsModule } from '../shared/components/tags/tags.module';
 import { MdEditorModule } from '../shared/components/md-editor/md-editor.module';
 import { PhotosUploaderModule } from '../shared/components/photos-uploader/photos-uploader.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { PhotosUploaderModule } from '../shared/components/photos-uploader/photo
     ReactiveFormsModule,
     TagsModule,
     MdEditorModule,
-    PhotosUploaderModule
+    PhotosUploaderModule,
+    HttpClientModule
   ]
 })
 export class PlaceEditDialogModule {}
