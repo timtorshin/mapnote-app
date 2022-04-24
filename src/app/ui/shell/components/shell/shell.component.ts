@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { LeafletMouseEvent } from 'leaflet';
 import { DialogService } from 'src/app/dialog.service';
 import { MapService } from 'src/app/map.service';
+import { PlaceCardControllerService } from 'src/app/place-card-controller.service';
 
 @Component({
   selector: 'mn-shell',
@@ -16,7 +17,8 @@ export class ShellComponent implements OnInit {
 
   constructor(
     private mapService: MapService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    public placeCardController: PlaceCardControllerService
   ) {}
 
   public ngOnInit(): void {
@@ -45,5 +47,9 @@ export class ShellComponent implements OnInit {
     this.dialogService.open();
     this.isShowAddButton = false;
     clearTimeout(this.addButtonLifeTimerId);
+  }
+
+  public onClosePlaceCard(): void {
+    this.placeCardController.close();
   }
 }

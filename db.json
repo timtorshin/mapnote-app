@@ -28,49 +28,6 @@
         "longitude": 38.96078109741212
       },
       "id": 2
-    },
-    {
-      "name": "Bar 3",
-      "rating": 4,
-      "description": null,
-      "tags": [
-        "Паб"
-      ],
-      "photos": [],
-      "coordinates": {
-        "latitude": 45.049148771406784,
-        "longitude": 38.954601287841804
-      },
-      "id": 3
-    },
-    {
-      "name": "Pub 1",
-      "rating": 5,
-      "description": null,
-      "tags": [
-        "Паб",
-        "Бар"
-      ],
-      "photos": [],
-      "coordinates": {
-        "latitude": 45.03107538225726,
-        "longitude": 38.983268737792976
-      },
-      "id": 4
-    },
-    {
-      "name": "Pub 2",
-      "rating": 4,
-      "description": null,
-      "tags": [
-        "Паб"
-      ],
-      "photos": [],
-      "coordinates": {
-        "latitude": 45.02707177887178,
-        "longitude": 38.964042663574226
-      },
-      "id": 5
     }
   ]
 }
