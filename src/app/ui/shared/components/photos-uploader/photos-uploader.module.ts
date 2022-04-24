@@ -1,20 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { PhotosUploaderComponent } from './photos-uploader.component';
 import { IconModule } from '../icon/icon.module';
-import { TagsComponent } from './tags.component';
 
 @NgModule({
   declarations: [
-    TagsComponent
+    PhotosUploaderComponent
   ],
   exports: [
-    TagsComponent
+    PhotosUploaderComponent
   ],
   imports: [
     CommonModule,
-    IconModule,
-    FormsModule
+    IconModule
   ]
 })
-export class TagsModule {}
+export class PhotosUploaderModule {}

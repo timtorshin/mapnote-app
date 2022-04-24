@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { LeafletMouseEvent } from 'leaflet';
+import { DialogService } from 'src/app/dialog.service';
+import { MapService } from 'src/app/map.service';
 
 @Component({
   selector: 'mn-shell',
@@ -7,15 +10,40 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./shell.component.scss']
 })
 export class ShellComponent implements OnInit {
+  public isShowAddButton: boolean = false;
   public searchFormControl: FormControl = new FormControl();
+  private addButtonLifeTimerId: number | null = null;
 
-  constructor() {}
+  constructor(
+    private mapService: MapService,
+    private dialogService: DialogService
+  ) {}
 
-  public ngOnInit(): void {}
+  public ngOnInit(): void {
+    this.mapService.isReady.then((map) => {
+      map.addEventListener('click', (event: LeafletMouseEvent) => {
+        this.isShowAddButton = true;
+
+        if (this.addButtonLifeTimerId !== null) {
+          clearTimeout(this.addButtonLifeTimerId);
+        }
+
+        this.addButtonLifeTimerId = window.setTimeout(() => {
+          this.isShowAddButton = false;
+        }, 5000);
+
+        this.dialogService.isCurrentEditLatLng = event.latlng;
+      });
+    });
+  }
 
   public onClickClearButton(): void {
     this.searchFormControl.reset();
   }
 
-  public onClickAddButton(): void {}
+  public onClickAddButton(): void {
+    this.dialogService.open();
+    this.isShowAddButton = false;
+    clearTimeout(this.addButtonLifeTimerId);
+  }
 }
