@@ -45,8 +45,13 @@ export class AppComponent implements AfterViewInit {
           autoClose: false,
           closeOnClick: false,
           closeButton: false,
-          className: 'place-marker-tooltip'
+          className: 'place-marker-tooltip',
+          offset: [ 0, -5 ]
         }).openPopup();
+
+        marker.addEventListener('click', () => {
+          console.log(place);
+        });
       }
     });
 
